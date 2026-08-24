@@ -1,0 +1,15 @@
+# Gradle
+.gradle/
+.intellijPlatform/
+.kotlin/
+build/
+runIde.bat
+
+# IntelliJ-based IDEs
+.idea/
+*.iml
+out/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

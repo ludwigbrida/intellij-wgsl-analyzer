@@ -1,0 +1,33 @@
+<idea-plugin>
+    <id>dev.ludwigbrida.wgsl-analyzer</id>
+    <name>wgsl-analyzer</name>
+    <vendor>Ludwig Brida</vendor>
+
+    <description><![CDATA[
+        WGSL language support powered by wgsl-analyzer.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lsp</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup
+                id="wgsl-analyzer"
+                displayType="BALLOON"
+                isLogByDefault="true"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType
+                name="WGSL"
+                language="WGSL"
+                implementationClass="dev.wgsl.analyzer.WgslFileType"
+                fieldName="INSTANCE"
+                extensions="wgsl;wesl"/>
+        <lang.syntaxHighlighterFactory
+                language="WGSL"
+                implementationClass="dev.wgsl.analyzer.highlighting.WgslSyntaxHighlighterFactory"/>
+        <enterHandlerDelegate implementation="dev.wgsl.analyzer.editor.WgslEnterHandler" order="last"/>
+        <platform.lsp.integrationProvider implementation="dev.wgsl.analyzer.lsp.WgslLspIntegrationProvider"/>
+    </extensions>
+</idea-plugin>
